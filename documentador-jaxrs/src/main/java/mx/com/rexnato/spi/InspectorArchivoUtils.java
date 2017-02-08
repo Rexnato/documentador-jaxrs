@@ -83,9 +83,9 @@ public class InspectorArchivoUtils {
 	        } else if(file.getName().getExtension().equals("jar")){
 	        	FileObject jar = file;
 	        	
-	        	if(manager==null){
+	        	/*if(manager==null){
 	        		manager= VFS.getManager();
-	        	}
+	        	}*/
 	        	
 	        	InputStream streamJar = jar.getContent().getInputStream();
 	        	
@@ -160,10 +160,13 @@ public class InspectorArchivoUtils {
 		//System.out.println(documentacion.obtenerClasesRestProyecto("mx"));
 		//System.getProperties().list(System.out);
 		
+		ClassLoaderUtils.agregarCarpetaJars("/home/conrado/Documentos/Servidores/jboss-as-7.1.1.Final/modules");
+		
 		long currentTimeBefore = System.currentTimeMillis();
 		
-		Class<?>[] clasesEncontradas = obtenerClases("/home/conrado/Documentos/svn/sit-vehicular-integral/vehicular-integral-ws/target/vehicular-integral-ws-1.0.0-SNAPSHOT.war");
+		//Class<?>[] clasesEncontradas = obtenerClases("/home/conrado/Documentos/svn/sit-vehicular-integral/vehicular-integral-ws/target/vehicular-integral-ws-1.0.0-SNAPSHOT.war");
 		//Class<?>[] clasesEncontradas = obtenerClases("/home/conrado/Documentos/svn/sit-vehicular-integral/vehicular-integral-ws/target/vehicular-integral-ws-1.0.0-SNAPSHOT-classes.jar");
+		Class<?>[] clasesEncontradas = obtenerClases("/home/conrado/Documentos/svn/trunk/finanzas/finanzas-web/target/finanzas-web-5.0.6-SNAPSHOT.war");
 		
 		System.out.println("Clases procesadas: "+clasesEncontradas.length);
 		
