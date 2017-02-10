@@ -1,4 +1,4 @@
-package mx.com.rexnato.spi;
+package mx.com.rexnato.swing;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -66,8 +66,8 @@ public class ClassLoaderUtils {
 	}
 	
 	
-	public static void main(String[] args) {
-		//agregarJars(Arrays.asList("/home/conrado/Documentos/svn/sit-vehicular-integral/vehicular-integral-ws/target/vehicular-integral-ws-1.0.0-SNAPSHOT-classes.jar"));
-		agregarCarpetaJars("/home/conrado/Documentos/Servidores/jboss-as-7.1.1.Final/modules");
-	}
+//	public static void main(String[] args) {
+//		//agregarJars(Arrays.asList("/home/conrado/Documentos/svn/sit-vehicular-integral/vehicular-integral-ws/target/vehicular-integral-ws-1.0.0-SNAPSHOT-classes.jar"));
+//		agregarCarpetaJars("/home/conrado/Documentos/Servidores/jboss-as-7.1.1.Final/modules");
+//	}
 }

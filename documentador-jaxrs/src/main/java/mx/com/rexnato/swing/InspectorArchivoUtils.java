@@ -1,4 +1,4 @@
-package mx.com.rexnato.spi;
+package mx.com.rexnato.swing;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -21,6 +21,8 @@ import org.apache.commons.vfs2.FileSystemManager;
 import org.apache.commons.vfs2.VFS;
 
 import mx.com.rexnato.api.ClaseEndPoint;
+import mx.com.rexnato.spi.InspectorClaseUtils;
+import mx.com.rexnato.swing.ClassLoaderUtils;
 
 public class InspectorArchivoUtils {
 
@@ -142,11 +144,11 @@ public class InspectorArchivoUtils {
 			return clase;
 		} catch(InvocationTargetException ex){
 			
-			/*System.err.print("No se pudo cargar "+archivoClass.getName().getPathDecoded()+". ");
+			System.err.print("No se pudo cargar "+archivoClass.getName().getPathDecoded()+". ");
 			if(ex.getTargetException().getCause() instanceof ClassNotFoundException){
 				String claseFaltante = ex.getTargetException().getMessage();
 				System.err.println("No se encuentra la clase "+claseFaltante.replaceAll("/", "."));
-			}*/
+			}
 			clasesConDependencias.add(archivoClass);
 			//ex.printStackTrace();
 		}
@@ -154,36 +156,36 @@ public class InspectorArchivoUtils {
 		return null;
 	}
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		//DocumentacionForRest documentacion = new DocumentacionForRestImplements();
-		//System.out.println(documentacion.obtenerClasesRestProyecto("mx"));
-		//System.getProperties().list(System.out);
-		
-		ClassLoaderUtils.agregarCarpetaJars("/home/conrado/Documentos/Servidores/jboss-as-7.1.1.Final/modules");
-		
-		long currentTimeBefore = System.currentTimeMillis();
-		
-		//Class<?>[] clasesEncontradas = obtenerClases("/home/conrado/Documentos/svn/sit-vehicular-integral/vehicular-integral-ws/target/vehicular-integral-ws-1.0.0-SNAPSHOT.war");
-		//Class<?>[] clasesEncontradas = obtenerClases("/home/conrado/Documentos/svn/sit-vehicular-integral/vehicular-integral-ws/target/vehicular-integral-ws-1.0.0-SNAPSHOT-classes.jar");
-		Class<?>[] clasesEncontradas = obtenerClases("/home/conrado/Documentos/svn/trunk/finanzas/finanzas-web/target/finanzas-web-5.0.6-SNAPSHOT.war");
-		
-		System.out.println("Clases procesadas: "+clasesEncontradas.length);
-		
-		long currentTimeAfter = System.currentTimeMillis();
-		System.out.println("Segundos Transcurridos procesando: "+(currentTimeAfter-currentTimeBefore)/1000);
-		
-		
-		List<ClaseEndPoint> endPointsEncontrados = new ArrayList<>();
-		for(Class<?> c : clasesEncontradas){
-			Annotation anotacionServicio = c.getAnnotation(Path.class);
-			if(anotacionServicio!= null){
-				endPointsEncontrados.add(InspectorClaseUtils.obtenerInformacion(c, (Path) anotacionServicio));
-			}
-		}
-		
-		System.out.println("Servicios encontrados: "+endPointsEncontrados.size());
-		
-	}
+//	public static void main(String[] args) {
+//		// TODO Auto-generated method stub
+//		//DocumentacionForRest documentacion = new DocumentacionForRestImplements();
+//		//System.out.println(documentacion.obtenerClasesRestProyecto("mx"));
+//		//System.getProperties().list(System.out);
+//		
+//		ClassLoaderUtils.agregarCarpetaJars("/home/conrado/Documentos/Servidores/jboss-as-7.1.1.Final/modules");
+//		
+//		long currentTimeBefore = System.currentTimeMillis();
+//		
+//		//Class<?>[] clasesEncontradas = obtenerClases("/home/conrado/Documentos/svn/sit-vehicular-integral/vehicular-integral-ws/target/vehicular-integral-ws-1.0.0-SNAPSHOT.war");
+//		//Class<?>[] clasesEncontradas = obtenerClases("/home/conrado/Documentos/svn/sit-vehicular-integral/vehicular-integral-ws/target/vehicular-integral-ws-1.0.0-SNAPSHOT-classes.jar");
+//		Class<?>[] clasesEncontradas = obtenerClases("/home/conrado/Documentos/svn/trunk/finanzas/finanzas-web/target/finanzas-web-5.0.6-SNAPSHOT.war");
+//		
+//		System.out.println("Clases procesadas: "+clasesEncontradas.length);
+//		
+//		long currentTimeAfter = System.currentTimeMillis();
+//		System.out.println("Segundos Transcurridos procesando: "+(currentTimeAfter-currentTimeBefore)/1000);
+//		
+//		
+//		List<ClaseEndPoint> endPointsEncontrados = new ArrayList<>();
+//		for(Class<?> c : clasesEncontradas){
+//			Annotation anotacionServicio = c.getAnnotation(Path.class);
+//			if(anotacionServicio!= null){
+//				endPointsEncontrados.add(InspectorClaseUtils.obtenerInformacion(c, (Path) anotacionServicio));
+//			}
+//		}
+//		
+//		System.out.println("Servicios encontrados: "+endPointsEncontrados.size());
+//		
+//	}
 
 }
